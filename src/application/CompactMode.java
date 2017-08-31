@@ -76,7 +76,7 @@ public class CompactMode {
 		         * if "fx:controller" is not set in fxml
 		         * fxmlLoader.setController(NewWindowController);
 		         */
-		        Scene scene = new Scene(fxmlLoader.load(), 264, 264);
+		        Scene scene = new Scene(fxmlLoader.load(), 320, 300);
 		        Stage stage = new Stage();
 		        stage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.png")));
 		        stage.setTitle("Mouse Robot Expanded Mode");
