@@ -63,8 +63,8 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setHeight(320);
-			primaryStage.setWidth(300);
+			primaryStage.setHeight(340);
+			primaryStage.setWidth(280);
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.png")));
 			primaryStage.show();
@@ -128,7 +128,7 @@ public class Main extends Application {
 		         * if "fx:controller" is not set in fxml
 		         * fxmlLoader.setController(NewWindowController);
 		         */
-		        Scene scene = new Scene(fxmlLoader.load(), 144, 33);
+		        Scene scene = new Scene(fxmlLoader.load(), 170, 50);
 		        Stage stage = new Stage();
 		        stage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.png")));
 		        stage.setTitle("Compact Mode");
