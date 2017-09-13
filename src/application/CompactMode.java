@@ -78,7 +78,7 @@ public class CompactMode {
 		         */
 		        
 		        
-		        Scene scene = new Scene(fxmlLoader.load(), 280, 340);
+		        Scene scene = new Scene(fxmlLoader.load(), 260, 300);
 		        Stage stage = new Stage();
 		        stage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.png")));
 		        stage.setTitle("Mouse Robot Expanded Mode");
