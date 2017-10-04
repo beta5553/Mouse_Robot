@@ -39,7 +39,7 @@ public class MouseRobot  {
 	public void logThisInExpandedMode(String log, Label counterLabel, TextArea textArea) {
 			textArea.appendText(log + "\n");
 			System.out.println(log + counter + "(EM)");
-			counterLabel.setText(String.valueOf(counter));
+			counterLabel.setText(String.valueOf(counter)+"m");
 	}
 	
 	public void moveMouseInExpandedMode(Label counterLabel, TextArea textArea){
@@ -52,7 +52,7 @@ public class MouseRobot  {
 			robot.mouseMove(x+1, y+1);
 			robot.mouseMove(x, y);
 			
-			logThisInExpandedMode("Mouse X: "+ x + " Mouse Y: " + y + " At Counter: "+counter, counterLabel, textArea);
+			logThisInExpandedMode("Mouse X: "+ x + " Y: " + y + " Count: "+counter+"m", counterLabel, textArea);
 		}
 		catch (AWTException e) {
 			e.printStackTrace();

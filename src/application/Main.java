@@ -56,6 +56,14 @@ public class Main extends Application {
 		launch(args);
 	}
 	
+	@FXML
+	public void initialize() throws Exception { 
+		super.init();
+		System.out.println("initialize()");
+		mouseRobot.setRunning(true);
+		this.automaticStart();
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -68,6 +76,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.png")));
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
