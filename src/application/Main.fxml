@@ -1,25 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="320.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main">
+<AnchorPane prefHeight="133.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main">
    <children>
-      <Label layoutX="86.0" layoutY="11.0" text="Mouse Robot 1.0" />
-      <Button fx:id="startButton" layoutX="13.0" layoutY="38.0" mnemonicParsing="false" onAction="#startAction" prefHeight="22.0" prefWidth="143.0" text="Start" />
-      <Label fx:id="timerLabel" layoutX="14.0" layoutY="74.0" text="Welcome, press start!" />
-      <Label layoutX="13.0" layoutY="99.0" text="Counter:" />
-      <Label fx:id="counterLabel" layoutX="80.0" layoutY="99.0" text="0" />
+      <Label layoutX="15.0" layoutY="12.0" text="MEOWS">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Button fx:id="startButton" layoutX="13.0" layoutY="38.0" mnemonicParsing="false" onAction="#startAction" prefHeight="22.0" prefWidth="143.0" text="Start">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Button>
+      <Label fx:id="timerLabel" layoutX="60.0" layoutY="12.0" text="Welcome, press start!">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Label layoutX="13.0" layoutY="68.0" text="Meows has been active for: ">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Label fx:id="counterLabel" layoutX="157.0" layoutY="67.0" text="0M" />
          
-      <ProgressIndicator fx:id="progressIndicator" layoutX="172.0" layoutY="32.0" prefHeight="77.0" prefWidth="74.0" visible="false" />
-      <Label layoutX="13.0" layoutY="269.0" text="Autor: Israel Morales. " />
-      <TextArea fx:id="textArea" layoutX="8.0" layoutY="159.0" prefHeight="104.0" prefWidth="244.0" />
-      <CheckBox fx:id="checkBox" layoutX="150.0" layoutY="130.0" mnemonicParsing="false" onAction="#toggleLogTextArea" selected="true" text="Loging" textOverrun="CLIP" underline="true" />
-      <CheckBox layoutX="12.0" layoutY="130.0" mnemonicParsing="false" onAction="#toggle2CompactMode" text="Compact mode" />
+      <ProgressIndicator fx:id="progressIndicator" layoutX="172.0" layoutY="32.0" prefHeight="103.0" prefWidth="124.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Label layoutX="14.0" layoutY="84.0" text="Autor: Israel Morales. ">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Hyperlink fx:id="hyperlink" layoutX="11.0" layoutY="98.0" text="beta5553@gmail.com" />
+      <ImageView fitHeight="60.0" fitWidth="41.0" layoutX="269.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Documents/Turnover%20Documents%20CDHS/portal/Israel/leferay-portal-4.1.3_WAR/html/js/editor/fckeditor/editor/filemanager/browser/liferay/images/icons/ai.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -4,25 +4,26 @@ import java.awt.AWTException;
 import java.awt.MouseInfo;
 import java.awt.Robot;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 
 /**
- * 
+ *
  * @author moraleix
+ * beta5553@gmail.com
  *
  */
 
 public class MouseRobot  {
-	
-	//To pass control between screens.
-	private boolean isRunning; 
-	
+
+	//Is robot running?
+	private boolean isRunning;
+
+	//AWT Robot.
 	Robot robot;
 	
 	//Global counter. 
     static int counter;
-    
-    
+
+
     public boolean isRunning(){
     	return isRunning;
     }
@@ -31,49 +32,30 @@ public class MouseRobot  {
     	System.out.println("setRunning="+isRunning);
     	this.isRunning = isRunning;
     }
-    
-    public void logThisInCompactMode(String log) {
-		System.out.println(log + counter + "(CM)");
-}
 	
-	public void logThisInExpandedMode(String log, Label counterLabel, TextArea textArea) {
-			textArea.appendText(log + "\n");
+	public void log(String log, Label counterLabel) {
 			System.out.println(log + counter + "(EM)");
-			counterLabel.setText(String.valueOf(counter)+"m");
+			counterLabel.setText(counter+"m");
 	}
 	
-	public void moveMouseInExpandedMode(Label counterLabel, TextArea textArea){
+	public void moveMouse(Label counterLabel){
 		try {
-			//if (robot == null) { robot = new Robot(); } //saving some heap. 
-			counter++; 
-			robot = new Robot();
-			int x = MouseInfo.getPointerInfo().getLocation().x;
-			int y = MouseInfo.getPointerInfo().getLocation().y;
-			robot.mouseMove(x+1, y+1);
-			robot.mouseMove(x, y);
-			
-			logThisInExpandedMode("Mouse X: "+ x + " Y: " + y + " Count: "+counter+"m", counterLabel, textArea);
-		}
-		catch (AWTException e) {
-			e.printStackTrace();
-		} 
-	}
-	
-	public void activateMouse()
-	{
-		try {
-			counter++;
-			robot = new Robot();
-			int x = MouseInfo.getPointerInfo().getLocation().x;
-			int y = MouseInfo.getPointerInfo().getLocation().y;
-			robot.mouseMove(x+1, y+1);
-			robot.mouseMove(x, y);
-			
-			logThisInCompactMode("Mouse X: "+ x + " Mouse Y: " + y + " At Counter: ");
-		} 
-		catch (AWTException e) {
-			e.printStackTrace();
-		}
-	}
 
+			// Avoid memory leak.
+			if (robot == null) {
+				robot = new Robot();
+			}
+
+			counter++;
+			int x = MouseInfo.getPointerInfo().getLocation().x;
+			int y = MouseInfo.getPointerInfo().getLocation().y;
+			robot.mouseMove(x+1, y+1);
+			robot.mouseMove(x, y);
+			
+			log("Mouse X: "+ x + " Y: " + y + " Count: "+counter+"m", counterLabel);
+		}
+		catch (AWTException e) {
+			e.printStackTrace();
+		} 
+	}
 }
