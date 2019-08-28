@@ -7,3 +7,5 @@ I decided to create this software to avoid my computer to log off every 5M, as d
 Feel free to download this code or add anything that you think could improve this software. 
 
 JavaFX / CSS
+
+MEOWS is the new name for Mouse Robot. 
