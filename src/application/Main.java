@@ -6,6 +6,9 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Parent;
@@ -46,6 +49,16 @@ public class Main extends Application {
 	Robot robot;
 	
 	MouseRobot mouseRobot = new MouseRobot();
+
+	private static Stage mainStage;
+
+	public static Stage getStage(){
+		return mainStage;
+	}
+
+	public void setStage(Stage stage){
+		this.mainStage = stage;
+	}
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -64,25 +77,35 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 			Scene scene = new Scene(root);
-			
+
+			//Avoiding memory leak and cloning object reference.
+			if(getStage() == null){
+				setStage(primaryStage);
+			}
+
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
 			//primaryStage.setHeight(340);
 			//primaryStage.setWidth(280);
-			primaryStage.setScene(scene);
-			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.png")));
-			primaryStage.show();
-			primaryStage.setTitle("MEOWS V2.0");
-			
+
+			mainStage.setScene(scene);
+			mainStage.getIcons().add(new Image(Main.class.getResourceAsStream("greenClock.png")));
+			mainStage.show();
+			mainStage.setTitle("MEOWS V1.0 is running");
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void startAction() 
-	{
+	public void startAction() {
 		//toggle  button action. 
 		if (startButton.getText().equals("Start")) {
 			System.out.println("Start button clicked");
+			getStage().getIcons().remove(0);
+			getStage().getIcons().add(new Image(getClass().getResourceAsStream("greenClock.png")));
+			mainStage.setTitle("MEOWS V1.0 is running");
+			timerLabel.setTextFill(Color.web("#074A0D"));
 			meowsStart();
 		}
 		else {
@@ -90,8 +113,12 @@ public class Main extends Application {
 			startButton.setText("Start");
 			timeline.stop();
 			timerLabel.setText("Status: stopped");
+			timerLabel.setTextFill(Color.web("#BB1113"));
 			progressIndicator.setVisible(false);
 			mouseRobot.setRunning(false);
+			getStage().getIcons().remove(0);
+			getStage().getIcons().add(new Image(getClass().getResourceAsStream("redClock.png")));
+			mainStage.setTitle("MEOWS V1.0 is stopped");
 		}
 	}
 	
@@ -105,5 +132,24 @@ public class Main extends Application {
 		timeline.play();
 		progressIndicator.setVisible(true);
 		mouseRobot.setRunning(true);
+	}
+
+	public void copyToClipboard(){
+		final Clipboard clipboard = Clipboard.getSystemClipboard();
+		final ClipboardContent content = new ClipboardContent();
+		content.putString("beta5553@gmail.com");
+		clipboard.setContent(content);
+
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("MEOWS v1.0 About info");
+		alert.setHeaderText("MEOWS V1.0 is developed by Israel Morales");
+		alert.setContentText("What is MEOWS? \n\n" +
+				"MEOWS will prevent your computer to go to sleep or to get blocked when you are away due inactivity, the counter wil tell you for how long your computer has been active represented in minutes. \n\n"+
+				"How does it work? MEOWS will be chasing your mouse to making it move every minute and putting it back where it was before, causing a loop of activity that will keep your session on.\n\n" +
+				"Contact me if you want to contribute to my github repo.\n\n" +
+				"My email: beta5553@gmail.com has been copied to your clipboard. Use Ctrl+V to paste it anywhere.\n\n" +
+				"This software is compatible with PC, MAC and Linux. \n");
+
+		alert.showAndWait();
 	}
 }
